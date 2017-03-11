@@ -5,9 +5,9 @@ embedded systems (FR : systemes embarques) like drones, bitwise operators come i
 
 * 1.0 Introduction to Bitwises operators.
 * 1.1 Learn how to <a href ="https://github.com/agavrel/42-Exam/tree/master/2-4-print_bits">print (display) bits.</a>
-* 1.2 Learn how to reverse a byte.
+* 1.2 Learn how to <a href ="https://github.com/agavrel/42-Projects/blob/master/filler/srcs/main.c">reverse a byte.</a>
 * 1.3 Check if a number is power of 2 or not.
-* 1.4 Learn how to use bitwise operators to save memory when parsing.
+* 1.4 Learn how to use bitwise operators to <a href ="https://github.com/agavrel/42-Projects/blob/master/ft_ls/srcs/parsing.c">save memory when parsing.</a>
 * 1.5 upcoming...
 
 ## Contact & contribute
