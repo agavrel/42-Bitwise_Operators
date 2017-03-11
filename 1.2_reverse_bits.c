@@ -60,13 +60,13 @@ unsigned char reverse_bits(unsigned char b)
 ** 2nd Method, swap bits 4 by 4, 2 by 2 and then 1 by 1
 ***********************************************************************
 **
-** 1) The first formula swaps 2 by 2 by applying masks:
+** 1) The first formula swaps 4 by 4 by applying masks:
 ** (b & 0xF0) >> 4 applies a mask to the higher 4 bits
-** then move them to the right. 0x0F = 0000 1111
+** (0x0F = 0000 1111) then move them to the right.
 ** (b & 0x0F) << 4 applies a mask to the lowest 4 bits
-** then move them to the left. 0x0F = 0000 1111
+** (0x0F = 0000 1111) then move them to the left.
 **
-** 2) Now swap 2 by 2: 0xCC = 1100 1100 and 0x33 = 0011 0011
+** 2) Now swapthem  2 by 2: 0xCC = 1100 1100 and 0x33 = 0011 0011
 **
 ** 3) Finally swap 1 by 1: 0xAA = 1010 1010 and 0x55 = 0101 0101
 **
@@ -83,8 +83,6 @@ unsigned char reverse_bits2(unsigned char b)
 	b = (b & 0xAA) >> 1 | (b & 0x55) << 1; // 3)
 	return (b);
 }
-
-
 
 /**********************************************************************
 ** 3rd Method, attributed to Rich Schroeppel in the Programming Hacks
