@@ -62,7 +62,7 @@ unsigned char reverse_bits(unsigned char b)
 **
 ** 1) The first formula swaps 4 by 4 by applying masks:
 ** (b & 0xF0) >> 4 applies a mask to the higher 4 bits
-** (0x0F = 0000 1111) then move them to the right.
+** (0x0F = 1111 0000) then move them to the right.
 ** (b & 0x0F) << 4 applies a mask to the lowest 4 bits
 ** (0x0F = 0000 1111) then move them to the left.
 **
