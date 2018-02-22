@@ -3,7 +3,7 @@
 **********************************************************************/
 
 /*
-** NB : an integer contains 4 bytes, as one byte = 4 bits it means that
+** NB : an integer contains 4 bytes, as one byte = 8 bits it means that
 ** an integer is equivalent to 32 bits.
 ** octet and byte means the same thing.
 ** an unsigned char has only 1 byte (8 bits).
