@@ -9,6 +9,7 @@ embedded systems (FR : systemes embarques) like drones, bitwise operators come i
 * 1.3 Check if a number is power of 2 or not.
 * 1.4 Learn how to use bitwise operators to <a href ="https://github.com/agavrel/42-Projects/blob/master/ft_ls/srcs/parsing.c">save memory when parsing.</a>
 * 1.5 Learn how to clear all bits.
+* 1.6 Check the binary gap within a positive integer N is any maximal sequence of consecutive zeros that is surrounded by ones at both ends in the binary representation of N.
 
 ## Contact & contribute
 To contact me and helping me to (fix bugs || improve) 42-Bitwises_Operators, feel free to e-mail me at **angavrel at student dot 42 dot fr**
