@@ -44,17 +44,19 @@ static int solution(int N) {
     int count;
     int max = 0;
 
-    while (N)
+    while (N) // we go through each digit of the number, representing it as a binary figure like 9 becomes 0b1001
 	{
-        if (N & 1)
+        if (N & 1) // if the number is odd, same as if (N % 2 == 1)
         {
-            count = 0;
-            while ((N >>= 1) && !(N & 1))
-                ++count;
-            max = count > max ? count : max;
+            count = 0; // starting the counter
+            while ((N >>= 1) && !(N & 1)) // we divide by 2 and then check the N is not odd (even), which means having a 0 in a binary representation
+                ++count; // increase the counter by 1, same as count = count + 1;
+            if (count > max)
+			 	max = count; // if our counter is bigger than the previously
+				// stored maximum it becomes the new maximum, to handle case such as 0b10000010001
         }
         else
-            N >>= 1;
+            N >>= 1; // if N is even then we divide N per 2 to check for the next number on the extreme right if it does countain a 1
     }
     return max;
 }
