@@ -8,6 +8,7 @@
 /*
 ** we can use a combination of left and right shifts using the power of two
 ** align. If align = 5 we will align on 2^5 = 32 bytes
+** Constraint : align < 32
 */
 
 size_t			ft_align_power_of_two(size_t size, size_t align)
@@ -20,6 +21,7 @@ size_t			ft_align_power_of_two(size_t size, size_t align)
 ** if size is 37 and we add the mask (31) we get 68.
 ** Then we ask to keep only the bits above the 5th since '~mask' toggle bits
 ** will becomes 0b1...10000
+** Constraint : mask must be a power of 2 - 1
 */
 
 size_t			ft_align_mask(size_t size, size_t mask)
@@ -34,3 +36,47 @@ int		main(void)
 	printf("%lu\n", ft_align_mask(n, 0x1f)); // 0x1f + 1 = 0x20 = 32
 	return (0);
 }
+
+/*
+Resulting assembly:
+
+ft_align_power_of_two(unsigned long, unsigned long):
+        push    rbp
+        mov     rbp, rsp
+        mov     QWORD PTR [rbp-8], rdi
+        mov     QWORD PTR [rbp-16], rsi
+        mov     rax, QWORD PTR [rbp-16]
+        mov     edx, 1
+        mov     ecx, eax
+        sal     edx, cl
+        mov     eax, edx
+        movsx   rdx, eax
+        mov     rax, QWORD PTR [rbp-8]
+        add     rax, rdx
+        lea     rdx, [rax-1]
+        mov     rax, QWORD PTR [rbp-16]
+        mov     ecx, eax
+        shr     rdx, cl
+        mov     rax, QWORD PTR [rbp-16]
+        mov     ecx, eax
+        sal     rdx, cl
+        mov     rax, rdx
+        pop     rbp
+        ret
+
+
+ft_align_mask(unsigned long, unsigned long):
+		push    rbp
+        mov     rbp, rsp
+        mov     QWORD PTR [rbp-8], rdi
+        mov     QWORD PTR [rbp-16], rsi
+        mov     rdx, QWORD PTR [rbp-8]
+        mov     rax, QWORD PTR [rbp-16]
+        add     rdx, rax
+        mov     rax, QWORD PTR [rbp-16]
+        not     rax
+        and     rax, rdx
+        pop     rbp
+        ret
+
+*/
