@@ -40,43 +40,21 @@ int		main(void)
 /*
 Resulting assembly:
 
-ft_align_power_of_two(unsigned long, unsigned long):
-        push    rbp
-        mov     rbp, rsp
-        mov     QWORD PTR [rbp-8], rdi
-        mov     QWORD PTR [rbp-16], rsi
-        mov     rax, QWORD PTR [rbp-16]
-        mov     edx, 1
-        mov     ecx, eax
-        sal     edx, cl
-        mov     eax, edx
-        movsx   rdx, eax
-        mov     rax, QWORD PTR [rbp-8]
-        add     rax, rdx
-        lea     rdx, [rax-1]
-        mov     rax, QWORD PTR [rbp-16]
-        mov     ecx, eax
-        shr     rdx, cl
-        mov     rax, QWORD PTR [rbp-16]
-        mov     ecx, eax
-        sal     rdx, cl
-        mov     rax, rdx
-        pop     rbp
-        ret
+ft_align_power_of_two(unsigned long long, unsigned long long):
+    mov rcx, rsi
+    mov eax, 1
+    sal eax, cl
+    cdqe
+    lea rax, [rdi-1+rax]
+    shr rax, cl
+    sal rax, cl
+    ret
 
+ft_align_mask(unsigned long long, unsigned long long):
+    lea rax, [rdi+rsi]
+    not rsi
+    and rax, rsi
+    ret
 
-ft_align_mask(unsigned long, unsigned long):
-		push    rbp
-        mov     rbp, rsp
-        mov     QWORD PTR [rbp-8], rdi
-        mov     QWORD PTR [rbp-16], rsi
-        mov     rdx, QWORD PTR [rbp-8]
-        mov     rax, QWORD PTR [rbp-16]
-        add     rdx, rax
-        mov     rax, QWORD PTR [rbp-16]
-        not     rax
-        and     rax, rdx
-        pop     rbp
-        ret
-
+You can hence witness that the function aligning using the mask is much more optimized !!
 */
