@@ -38,7 +38,7 @@
 ** 4) Bitwise AND operator (&) : we now use a mask (&), with 1,
 ** &= 1 is equivalent to %= 2; Hence we will check if the value is odd.
 **
-** 5) Bitwise EXCLUSIVE OR operator (|) :
+** 5) Bitwise OR operator (|) :
 ** we add 1 to the number if it was even (multiple of 2).
 ** if it was already odd nothing will change.
 **
