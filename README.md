@@ -103,7 +103,8 @@ unsigned char reverse(unsigned char b) {
 NB: The ```>> 4``` is because there are 8 bits in 1 byte, which is an unsigned char so we want to take the other half, and so on.
 
 We could easily apply this solution to 4 bytes with only two additional lines and following the same logic. Since both mask complement each other we can even use ~ in order to switch bits and saving some ink:
-```
+
+```c++
 uint32_t reverse_integer_bits(uint32_t b) {
    uint32_t mask = 0b11111111111111110000000000000000;
    b = (b & mask) >> 16 | (b & ~mask) << 16;
@@ -137,7 +138,7 @@ T reverse_bits(T n) {
 ```
 
 Try it yourself with inclusion of above function:
-```
+```c++
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
