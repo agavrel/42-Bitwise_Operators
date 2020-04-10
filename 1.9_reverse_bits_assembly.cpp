@@ -18,14 +18,14 @@ T reverse_bits(T n) {
 }
 
 
-unsigned char reverse_bits(unsigned char c) {
+unsigned char reverse_bits3(unsigned char c) {
     __asm__ __volatile__ (R"(
-            mov cx, 8       ; we will reverse the 8 bits contained in one byte
-        loop:               ; While loop
-            shr di          ; Shift Register ```di``` (containing value of c) to the Right
-            rcl ax          ; Rotate Carry Left: add the carry, the carry is equal to 1 if one bit was "lost" from previous operation, and rotate ```ax``` to the left
-            dec cl          ; Decrement ecx
-            jnz short loop  ; Jump if cx register Not equal to Zero else end loop and return ax
+		mov cx, 8       
+	myloop:                   
+		ror di          
+		adc ax, ax      
+		dec cx          
+		jnz short myloop  
     ;)");
 }
 
@@ -50,10 +50,10 @@ void print_binary(T n)
 }
 
 int main() {
-	unsigned int n = 12534534U | 1U << 31;
+	unsigned char n = 103;//12534534U | 1U << 31;
 	
 	print_binary(n);
-	unsigned int o = reverse_bits2(n);
+	unsigned char o = reverse_bits3(n);
 	print_binary(o);
 	n = reverse_bits(n);
 	print_binary(n);

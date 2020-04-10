@@ -119,6 +119,8 @@ uint32_t reverse_integer_bits(uint32_t b) {
    return b;
 }
 ```
+
+---
 ### [C++ Only] Reverse Any Unsigned ! (Template)
 
 The above logic can be summarized with a loop that would work on any type of unsigned:
@@ -169,6 +171,17 @@ int main() {
 	print_binary(l);
 	return 0;
 }
+```
+
+---
+### Bonus, Assembly code, refer to 1.9
+```asm
+	mov cx, 8           ; we will reverse the 8 bits contained in one byte
+loop:                   ; while loop
+	ror di              ; rotate `di` (containing value of the first argument of callee function) to the Right in a non-destructive manner
+	adc ax, ax          ; shift `ax` left and add the carry, the carry is equal to 1 if one bit was rotated from 0b1 to MSB from previous operation
+	dec cx              ; Decrement cx
+	jnz short loop      ; Jump if cx register Not equal to Zero else end loop and return ax
 ```
 
 ## Contact & contribute
