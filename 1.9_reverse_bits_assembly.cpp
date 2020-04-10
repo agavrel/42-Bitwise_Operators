@@ -18,15 +18,15 @@ T reverse_bits(T n) {
 }
 
 
-unsigned char reverse_byte_bits(unsigned char a) {
-	__asm__ __volatile__ (R"(
-      		mov cx, 8
-	loop:
-		shr di
-		rcl ax
-		dec cl
-		jnz short loop   
-	;)");
+unsigned char reverse_bits(unsigned char c) {
+    __asm__ __volatile__ (R"(
+            mov cx, 8       ; we will reverse the 8 bits contained in one byte
+        loop:               ; While loop
+            shr di          ; Shift Register ```di``` (containing value of c) to the Right
+            rcl ax          ; Rotate Carry Left: add the carry, the carry is equal to 1 if one bit was "lost" from previous operation, and rotate ```ax``` to the left
+            dec cl          ; Decrement ecx
+            jnz short loop  ; Jump if cx register Not equal to Zero else end loop and return ax
+    ;)");
 }
 
 uint32_t reverse_bits2(uint32_t a) {
